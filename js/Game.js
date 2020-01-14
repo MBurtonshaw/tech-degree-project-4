@@ -6,15 +6,15 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            new Phrase("buy local"),
-            new Phrase("delete your gram"),
-            new Phrase("stop the filters"),
-            new Phrase("start recycling"),
-            new Phrase("read more")
+            new Phrase("Buy Local"),
+            new Phrase("Delete Your Gram"),
+            new Phrase("Stop the Filters"),
+            new Phrase("Start Recycling"),
+            new Phrase("Read More")
         ];
         this.activePhrase = null;
     }
     getRandomPhrase() {
-        return this.phrases[Math.floor(Math.random * this.phrases.length)];
+        return this.phrases[Math.floor(Math.random() * this.phrases.length)];
     }
 }
