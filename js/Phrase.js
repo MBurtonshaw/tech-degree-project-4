@@ -7,21 +7,42 @@ class Phrase {
         this.phrase = phrase.toLowerCase();
     }
     addPhraseToDisplay() {
-        return this.game.getRandomPhrase();
+        
+        //Declaring variables for DOM elements & appending ul to div
+        const phraseDiv = document.getElementById("phrase");
+        const ul = document.getElementsByTagName("ul")[0];
+        phraseDiv.appendChild(ul);
+        
+        //Loop to cycle through this.phrase and split up each character, append it to a <li> element, and give it a class
+        for (let i = 0; i < this.phrase.length; i++) {
+            const li = document.createElement("LI");
+            if (this.phrase[i] === " ") {
+                li.classList.add("hide");
+                li.classList.add("space");
+                ul.appendChild(li);
+                } else {
+            li.classList.add("hide");
+            li.classList.add("letter");
+            let newArray = this.phrase.split("");
+            li.textContent = newArray[i];
+            li.classList.add(this.phrase[i]);
+            ul.appendChild(li);
+                }
+        }
     }
+    checkLetter(letter) {
+        console.log("ksajdfh");
+    }
+   /* showMatchedLetter() {
+        for (let j = 0; j < this.phrase.length; j++) {
+            const list = document.getElementsByTagName("li");
+            if (list[j].classList.includes(e.target.value)) {
+                console.log('yatta');
+                }
+        }
+    }*/
 }
 
-/*
-        let display = document.createElement("DIV");
-        display.id = "display";
-        display.class = "section";
-        let ul = document.createElement("UL");
-        document.getElementById("phrase").appendChild(ul);
-        getRandomPhrase();
-        phrase.forEach(letter => {
-            let li = document.createElement("LI");
-            li.textContent = letter;
-            ul.append(li);
-            li.addClass("letter");
-            });
-            */
+
+
+       
