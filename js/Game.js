@@ -18,16 +18,18 @@ class Game {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
     }
     startGame() {
-        const overlay = document.getElementById("overlay");
-        overlay.style.display = "none";
+        const startScreen = document.getElementById("overlay");
+        startScreen.style.display = "none";
         const randomPhrase = game.getRandomPhrase();
-        const phrase = new Phrase (randomPhrase.phrase);
-        phrase.addPhraseToDisplay();
-        this.activePhrase = phrase;
+        const randomNewPhrase = new Phrase (randomPhrase.phrase);
+        randomNewPhrase.addPhraseToDisplay();
+        this.activePhrase = randomNewPhrase;
     }
     handleInteraction() {
         document.addEventListener("keydown", () => {
-            phrase.checkLetter;
+            const target = event.keycode;
+            this.activePhrase.checkLetter();
+            //phrase.showMatchedLetter;
         });
     }
     /*checkForWin() {
