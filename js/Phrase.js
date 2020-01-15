@@ -7,7 +7,6 @@ class Phrase {
         this.phrase = phrase.toLowerCase();
     }
     addPhraseToDisplay() {
-        
         //Declaring variables for DOM elements & appending ul to div
         const phraseDiv = document.getElementById("phrase");
         const ul = document.getElementsByTagName("ul")[0];
@@ -23,15 +22,17 @@ class Phrase {
                 } else {
             li.classList.add("hide");
             li.classList.add("letter");
-            let newArray = this.phrase.split("");
-            li.textContent = newArray[i];
+            let phraseArray = this.phrase.split("");
+            li.textContent = phraseArray[i];
             li.classList.add(this.phrase[i]);
             ul.appendChild(li);
                 }
         }
     }
     checkLetter(letter) {
-        console.log("ksajdfh");
+        if (this.keycode === "a") {
+                console.log('yatta');
+            }
     }
    /* showMatchedLetter() {
         for (let j = 0; j < this.phrase.length; j++) {
@@ -42,7 +43,3 @@ class Phrase {
         }
     }*/
 }
-
-
-
-       
