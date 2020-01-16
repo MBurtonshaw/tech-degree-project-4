@@ -33,8 +33,8 @@ class Phrase {
         if (this.phrase.includes(event.key)) {
             let letter = event.key;
             if (event.key !== " ") {
-                return true;
-                showMatchedLetter();
+                console.log(letter);
+                //showMatchedLetter();
                 }
             }
     }
