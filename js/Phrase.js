@@ -30,16 +30,21 @@ class Phrase {
         }
     }
     checkLetter(letter) {
-        if (this.keycode === "a") {
-                console.log('yatta');
+        if (this.phrase.includes(event.key)) {
+            let letter = event.key;
+            if (event.key !== " ") {
+                return true;
+                showMatchedLetter();
+                }
             }
     }
-   /* showMatchedLetter() {
-        for (let j = 0; j < this.phrase.length; j++) {
-            const list = document.getElementsByTagName("li");
-            if (list[j].classList.includes(e.target.value)) {
+    /*
+    showMatchedLetter() {
+        for (let j = 0; j < this.activePhrase.length; j++) {
+            if (j < 2) {
                 console.log('yatta');
                 }
         }
-    }*/
-}
+                }
+        }
+        */
