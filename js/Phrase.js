@@ -27,17 +27,22 @@ class Phrase {
             li.classList.add(this.phrase[i]);
             ul.appendChild(li);
                 }
+            }
+        }        
+    checkLetter() {
+            console.log("dfsf");
         }
-    }
-    checkLetter(letter) {
-        if (this.phrase.includes(event.key)) {
-            let letter = event.key;
-            if (event.key !== " ") {
-                console.log(letter);
-                //showMatchedLetter();
+}
+    
+        /*checkLetter(letter) {
+        letter = event.key;
+        if (this.phrase.includes(letter)) {
+            if (letter !== " ") {
+                showMatchedLetter();
                 }
             }
-    }
+    } */
+    
     /*
     showMatchedLetter() {
         for (let j = 0; j < this.activePhrase.length; j++) {
