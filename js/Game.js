@@ -26,11 +26,7 @@ class Game {
         this.activePhrase = randomNewPhrase;
     }
     handleInteraction() {
-        document.addEventListener("keydown", () => {
-            const target = event.keycode;
-            this.activePhrase.checkLetter();
-            //phrase.showMatchedLetter;
-        });
+        phrase.checkLetter();
     }
     /*checkForWin() {
         
