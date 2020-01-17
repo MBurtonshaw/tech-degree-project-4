@@ -8,5 +8,19 @@ const startButton = document.getElementById("btn__reset");
 startButton.addEventListener("click", () => {
     game = new Game();
     game.startGame();
-    game.handleInteraction();
 });
+
+const clickKeys = document.querySelectorAll(".key");
+
+clickKeys.forEach(letter => {
+    letter.addEventListener("click", () => {
+        game.handleInteraction();
+});
+});
+
+    
+/*
+        document.addEventListener("keydown", () => {
+            this.activePhrase.checkLetter();
+        });
+        */
