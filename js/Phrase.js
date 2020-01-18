@@ -29,12 +29,24 @@ class Phrase {
                 }
             }
         }        
-    checkLetter() {
-            console.log("dfsf");
+    checkLetter(letter) {
+        if (this.phrase.includes(letter)) {
+            console.log(true);
+            } else {
+                console.log(false);
+            }
+} 
+        /*showMatchedLetter() {
+        const screenKeys = document.querySelectorAll(".key");
+        for (let j = 0; j < screenKeys.length; j++) {
+            //if (j < 2) {
+                console.log('yatta');
+                //}
         }
+                }*/
 }
-    
-        /*checkLetter(letter) {
+    /*
+        checkLetter(letter) {
         letter = event.key;
         if (this.phrase.includes(letter)) {
             if (letter !== " ") {
@@ -43,13 +55,4 @@ class Phrase {
             }
     } */
     
-    /*
-    showMatchedLetter() {
-        for (let j = 0; j < this.activePhrase.length; j++) {
-            if (j < 2) {
-                console.log('yatta');
-                }
-        }
-                }
-        }
-        */
+    
