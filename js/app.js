@@ -13,8 +13,9 @@ startButton.addEventListener("click", () => {
 const clickKeys = document.querySelectorAll(".key");
 
 clickKeys.forEach(letter => {
-    letter.addEventListener("click", () => {
-        game.handleInteraction();
+    letter.addEventListener("click", e => {
+        letter = e.target;
+        game.handleInteraction(e.target);
 });
 });
 
