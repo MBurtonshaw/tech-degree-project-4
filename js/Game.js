@@ -25,8 +25,16 @@ class Game {
         randomNewPhrase.addPhraseToDisplay();
         this.activePhrase = randomNewPhrase;
     }
-    handleInteraction() {
-        this.activePhrase.checkLetter(letter);
+    handleInteraction(event) {
+        let screenKeys = event;
+        const letter = screenKeys.textContent;
+        if (this.activePhrase.checkLetter(letter)) {
+            this.activePhrase.showMatchedLetter(screenKeys);
+            screenKeys.disabled = true;
+            } else {
+                console.log(false);
+                //removeLife();
+            }
     }
     /*checkForWin() {
         
