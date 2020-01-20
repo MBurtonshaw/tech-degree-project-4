@@ -31,19 +31,19 @@ class Phrase {
         }        
     checkLetter(letter) {
         if (this.phrase.includes(letter)) {
-            console.log(true);
+            return true;
             } else {
-                console.log(false);
+                return false;
             }
 } 
-        /*showMatchedLetter() {
-        const screenKeys = document.querySelectorAll(".key");
-        for (let j = 0; j < screenKeys.length; j++) {
-            //if (j < 2) {
-                console.log('yatta');
-                //}
-        }
-                }*/
+        showMatchedLetter(screenKeys) {
+            const clickKeys = document.querySelector("ul").children;
+            for (let j = 0; j < clickKeys.length; j++) {
+                const revealed = clickKeys[j].textContent;
+                screenKeys.classList.add("chosen");
+                revealed.classList.add("show");
+            }
+                }
 }
     /*
         checkLetter(letter) {
