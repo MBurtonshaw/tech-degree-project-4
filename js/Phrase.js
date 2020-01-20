@@ -41,9 +41,8 @@ class Phrase {
             for (let j = 0; j < clickKeys.length; j++) {
                 const revealed = clickKeys[j];
                 if (revealed.textContent === screenKeys.textContent) {
-                screenKeys.classList.add("chosen");
                 revealed.classList.add("show");
-                    }
+                revealed.classList.remove("hide");
             }
                 }
 }
@@ -58,3 +57,4 @@ class Phrase {
     } */
     
     
+}
