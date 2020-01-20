@@ -39,9 +39,11 @@ class Phrase {
         showMatchedLetter(screenKeys) {
             const clickKeys = document.querySelector("ul").children;
             for (let j = 0; j < clickKeys.length; j++) {
-                const revealed = clickKeys[j].textContent;
+                const revealed = clickKeys[j];
+                if (revealed.textContent === screenKeys.textContent) {
                 screenKeys.classList.add("chosen");
                 revealed.classList.add("show");
+                    }
             }
                 }
 }
