@@ -2,6 +2,14 @@
  * Project 4 - OOP Game App
  * Game.js */
 const body = document.querySelector("body");
+const startScreen = document.getElementById("overlay");
+const hearts = document.querySelectorAll("li img");
+
+function removeKeys() {
+    $(".key").removeClass("chosen");
+    $(".key").removeClass("wrong");
+    $(".key").removeAttr("disabled");
+}
 
 class Game {
     constructor() {
@@ -19,8 +27,7 @@ class Game {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
     }
     startGame() {
-        const startScreen = document.getElementById("overlay");
-        startScreen.style.display = "none";
+        $(startScreen).hide();
         const randomPhrase = game.getRandomPhrase();
         const randomNewPhrase = new Phrase (randomPhrase.phrase);
         randomNewPhrase.addPhraseToDisplay();
@@ -43,26 +50,22 @@ class Game {
             }
     }
     removeLife() {
-    const remainingLives = document.getElementsByClassName("tries");
-    const heartImage = document.querySelectorAll("li img");
-    
-        if (this.activePhrase.checkLetter() === false) {
+            if (this.activePhrase.checkLetter() === false) {
             this.missed ++;
             if (this.missed === 1) {
-                heartImage[0].src = "images/lostHeart.png";
+                hearts[0].src = "images/lostHeart.png";
             } else if (this.missed === 2) {
-                heartImage[1].src = "images/lostHeart.png";
+                hearts[1].src = "images/lostHeart.png";
             } else if (this.missed === 3) {
-                heartImage[2].src = "images/lostHeart.png";
+                hearts[2].src = "images/lostHeart.png";
             } else if (this.missed === 4) {
-                heartImage[3].src = "images/lostHeart.png";
+                hearts[3].src = "images/lostHeart.png";
             } else if (this.missed === 5) {
-                heartImage[4].src = "images/lostHeart.png";
-                body.classList.add("lose");
+                hearts[4].src = "images/lostHeart.png";
                 this.gameOver();
             }
+            } 
         }
-    }
     checkForWin() {
         const keyCheck = document.querySelectorAll(".show");
         const letterCheck = document.querySelectorAll(".letter");
@@ -76,18 +79,28 @@ class Game {
              }
     }
     }
-    gameOver(gameWon) {
+    gameOver() {
+        $(startScreen).show();
+        $(startScreen).append($("h1"));
+        $("h1").insertBefore($("#btn__reset"));
         if (this.checkForWin()) {
-            console.log(true);
-            $(".main-container").append($("h1"));
-            $("h1").insertBefore($("#overlay"));
+            $(startScreen).addClass("win");
             $("h1").text("Great job!");
-            body.classList.add("win");
             } else {
-            console.log(false);
-            $(".main-container").append($("h1"));
-            $("h1").insertBefore($("#overlay"));
+            startScreen.classList.add("lose");
             $("h1").text("Sorry, better luck next time!");
+            removeKeys();
             }
     }
+    resetGame() {
+        removeKeys();
+                if (!this.activePhrase) {
+                    $(".letter").remove();
+                    }
+                for (let j = 0; j < hearts.length; j++) {
+            if (hearts[j].src = "images/lostHeart.png") {
+                hearts[j].src = "images/liveHeart.png";
+                }
+            }
+}
 }
