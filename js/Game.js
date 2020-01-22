@@ -94,6 +94,8 @@ class Game {
     }
     resetGame() {
         removeKeys();
+        $("#overlay").removeClass("lose");
+        $("#overlay").removeClass("win");
         if (!this.activePhrase) {
             $(".letter").remove();
         }
