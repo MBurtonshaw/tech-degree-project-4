@@ -7,19 +7,28 @@ const startButton = document.getElementById("btn__reset");
 
 startButton.addEventListener("click", () => {
     game = new Game();
+    game.resetGame();
     game.startGame();
 });
 
-const clickKeys = document.querySelectorAll(".key");
+const screenKeys = document.querySelectorAll(".key");
 
-clickKeys.forEach(letter => {
-    letter.addEventListener("click", e => {
-        letter = e.target;
+screenKeys.forEach(letter => {
+    letter.addEventListener("click", (e) => {
         game.handleInteraction(e.target);
 });
 });
 
-    
+/*
+const board = document.getElementsByClassName("keyrow")[0];
+
+board.forEach(key => {
+document.addEventListener("keydown", (e) => {
+    this.key = e.target;
+    console.log(e.target);
+});
+});
+*/
 /*
         document.addEventListener("keydown", () => {
             this.activePhrase.checkLetter();
