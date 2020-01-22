@@ -80,14 +80,14 @@ class Game {
         }
     }
     gameOver() {
-        $(startScreen).show();
-        $(startScreen).append($("h1"));
+        $("#overlay").show();
+        $("#overlay").append($("h1"));
         $("h1").insertBefore($("#btn__reset"));
         if (this.checkForWin()) {
-            $(startScreen).addClass("win");
+            $("#overlay").addClass("win");
             $("h1").text("Great job!");
         } else {
-            startScreen.classList.add("lose");
+            $("#overlay").addClass("lose");
             $("h1").text("Sorry, better luck next time!");
             removeKeys();
         }
