@@ -29,7 +29,7 @@ class Game {
     startGame() {
         $(startScreen).hide();
         const randomPhrase = game.getRandomPhrase();
-        const randomNewPhrase = new Phrase (randomPhrase.phrase);
+        const randomNewPhrase = new Phrase(randomPhrase.phrase);
         randomNewPhrase.addPhraseToDisplay();
         this.activePhrase = randomNewPhrase;
     }
@@ -41,17 +41,17 @@ class Game {
             screenKeys.disabled = true;
             screenKeys.classList.add("chosen");
             this.checkForWin();
-            } else {
-                this.removeLife();
-                screenKeys.classList.add("wrong");
-            }
+        } else {
+            this.removeLife();
+            screenKeys.classList.add("wrong");
+        }
         if (this.checkForWin()) {
             this.gameOver();
-            }
+        }
     }
     removeLife() {
-            if (this.activePhrase.checkLetter() === false) {
-            this.missed ++;
+        if (this.activePhrase.checkLetter() === false) {
+            this.missed++;
             if (this.missed === 1) {
                 hearts[0].src = "images/lostHeart.png";
             } else if (this.missed === 2) {
@@ -64,20 +64,20 @@ class Game {
                 hearts[4].src = "images/lostHeart.png";
                 this.gameOver();
             }
-            } 
         }
+    }
     checkForWin() {
         const keyCheck = document.querySelectorAll(".show");
         const letterCheck = document.querySelectorAll(".letter");
-        
+
         for (let i = 0; i < keyCheck.length; i++) {
             let counter = letterCheck.length;
             if (counter === keyCheck.length) {
                 return true;
-             } else {
-                 return false;
-             }
-    }
+            } else {
+                return false;
+            }
+        }
     }
     gameOver() {
         $(startScreen).show();
@@ -86,21 +86,21 @@ class Game {
         if (this.checkForWin()) {
             $(startScreen).addClass("win");
             $("h1").text("Great job!");
-            } else {
+        } else {
             startScreen.classList.add("lose");
             $("h1").text("Sorry, better luck next time!");
             removeKeys();
-            }
+        }
     }
     resetGame() {
         removeKeys();
-                if (!this.activePhrase) {
-                    $(".letter").remove();
-                    }
-                for (let j = 0; j < hearts.length; j++) {
-            if (hearts[j].src = "images/lostHeart.png") {
+        if (!this.activePhrase) {
+            $(".letter").remove();
+        }
+        for (let j = 0; j < hearts.length; j++) {
+            if ((hearts[j].src = "images/lostHeart.png")) {
                 hearts[j].src = "images/liveHeart.png";
-                }
             }
-}
+        }
+    }
 }
