@@ -14,9 +14,9 @@ startButton.addEventListener("click", () => {
 const screenKeys = document.querySelectorAll(".key");
 
 screenKeys.forEach(letter => {
-    letter.addEventListener("click", (e) => {
+    letter.addEventListener("click", e => {
         game.handleInteraction(e.target);
-});
+    });
 });
 
 /*
