@@ -16,21 +16,17 @@ const screenKeys = document.querySelectorAll(".key");
 screenKeys.forEach(letter => {
     letter.addEventListener("click", e => {
         game.handleInteraction(e.target);
+
+        document.addEventListener("keydown", e => {
+            game.handleInteraction(e.target);
+        });
     });
 });
-
 /*
-const board = document.getElementsByClassName("keyrow")[0];
-
-board.forEach(key => {
-document.addEventListener("keydown", (e) => {
-    this.key = e.target;
-    console.log(e.target);
+for (let i = 0; i < screenKeys.length; i++) {
+    document.addEventListener("keydown", e => {
+        if (screenKeys[i].textContent === this.ActivePhrase) {
+       console.log('yatta'); 
+    }
 });
-});
-*/
-/*
-        document.addEventListener("keydown", () => {
-            this.activePhrase.checkLetter();
-        });
-        */
+     }*/
