@@ -13,14 +13,17 @@ startButton.addEventListener("click", () => {
 
 const screenKeys = document.querySelectorAll(".key");
 
+for (let i = 0; i < screenKeys.length; i++) {
+    const newKeys = screenKeys[i];
+}
+
 screenKeys.forEach(letter => {
     letter.addEventListener("click", e => {
         game.handleInteraction(e.target);
-
-        document.addEventListener("keydown", e => {
-            game.handleInteraction(e.target);
-        });
     });
+});
+document.addEventListener("keydown", e => {
+    game.handleInteraction(e.target);
 });
 /*
 for (let i = 0; i < screenKeys.length; i++) {
