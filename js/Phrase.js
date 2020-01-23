@@ -2,6 +2,14 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 
+function randomColor() {
+    const x = Math.floor(Math.random() * 256);
+    const y = Math.floor(Math.random() * 256);
+    const z = Math.floor(Math.random() * 256);
+    const color = "rgb(" + x + "," + y + "," + z + ")";
+    return color;
+}
+
 class Phrase {
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
@@ -19,12 +27,13 @@ class Phrase {
                 li.classList.add("hide");
                 li.classList.add("space");
                 ul.appendChild(li);
-            } else {
+            } else if (this.phrase[i]) {
                 li.classList.add("hide");
+                li.style.backgroundColor = randomColor();
                 li.classList.add("letter");
                 let phraseArray = this.phrase.split("");
                 li.textContent = phraseArray[i];
-                li.classList.add(this.phrase[i]);
+                li.classList.add(phraseArray[i]);
                 ul.appendChild(li);
             }
         }
@@ -32,15 +41,20 @@ class Phrase {
     checkLetter(letter) {
         if (this.phrase.includes(letter)) {
             return true;
+        } else if (this.phrase.includes(event.key)) {
+            return true;
         } else {
             return false;
         }
     }
     showMatchedLetter(screenKeys) {
-        const clickKeys = document.querySelector("ul").children;
+        const clickKeys = document.querySelectorAll("li");
         for (let j = 0; j < clickKeys.length; j++) {
             const revealed = clickKeys[j];
-            if (revealed.textContent === screenKeys.textContent) {
+            if (
+                revealed.textContent === screenKeys.textContent ||
+                revealed.textContent === event.key
+            ) {
                 revealed.classList.add("show");
                 revealed.classList.remove("hide");
             }
