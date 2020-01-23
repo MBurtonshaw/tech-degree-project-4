@@ -27,23 +27,37 @@ class Game {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
     }
     startGame() {
-        $(startScreen).hide();
+        $(startScreen).fadeOut(1000);
         const randomPhrase = game.getRandomPhrase();
         const randomNewPhrase = new Phrase(randomPhrase.phrase);
         randomNewPhrase.addPhraseToDisplay();
         this.activePhrase = randomNewPhrase;
     }
     handleInteraction(event) {
-        let screenKeys = event;
+        const screenKeys = event;
+        const eventKeys = event.key;
         const letter = screenKeys.textContent;
-        if (this.activePhrase.checkLetter(letter)) {
+        if (this.activePhrase.checkLetter(event.key)) {
             this.activePhrase.showMatchedLetter(screenKeys);
             screenKeys.disabled = true;
             screenKeys.classList.add("chosen");
             this.checkForWin();
-        } else {
-            this.removeLife();
+        }
+        if (
+            this.activePhrase.checkLetter(letter) &&
+            !this.activePhrase.checkLetter(event.key)
+        ) {
+            this.activePhrase.showMatchedLetter(screenKeys);
+            screenKeys.disabled = true;
+            screenKeys.classList.add("chosen");
+            this.checkForWin();
+        } else if (
+            !this.activePhrase.checkLetter(letter) ||
+            !this.activePhrase.checkLetter(event.key)
+        ) {
             screenKeys.classList.add("wrong");
+            screenKeys.disabled = true;
+            this.removeLife();
         }
         if (this.checkForWin()) {
             this.gameOver();
@@ -60,6 +74,7 @@ class Game {
                 hearts[2].src = "images/lostHeart.png";
             } else if (this.missed === 4) {
                 hearts[3].src = "images/lostHeart.png";
+                alert("You're down to your last heart!");
             } else if (this.missed === 5) {
                 hearts[4].src = "images/lostHeart.png";
                 this.gameOver();
