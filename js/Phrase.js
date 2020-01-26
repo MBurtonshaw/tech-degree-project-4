@@ -60,13 +60,3 @@ class Phrase {
             }
         }
     }
-    /*
-        checkLetter(letter) {
-        letter = event.key;
-        if (this.phrase.includes(letter)) {
-            if (letter !== " ") {
-                showMatchedLetter();
-                }
-            }
-    } */
-}
