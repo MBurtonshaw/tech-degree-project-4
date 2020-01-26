@@ -55,8 +55,18 @@ class Phrase {
                 revealed.textContent === screenKeys.textContent ||
                 revealed.textContent === event.key
             ) {
-                revealed.classList.add("show");
+                $(revealed).hide().addClass("show").fadeIn(200);
                 revealed.classList.remove("hide");
             }
         }
     }
+    /*
+        checkLetter(letter) {
+        letter = event.key;
+        if (this.phrase.includes(letter)) {
+            if (letter !== " ") {
+                showMatchedLetter();
+                }
+            }
+    } */
+}
