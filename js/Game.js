@@ -35,7 +35,6 @@ class Game {
     }
     handleInteraction(event) {
         const screenKeys = event;
-        const eventKeys = event.key;
         const letter = screenKeys.textContent;
         if (this.activePhrase.checkLetter(event.key)) {
             this.activePhrase.showMatchedLetter(screenKeys);
@@ -86,8 +85,7 @@ class Game {
         const letterCheck = document.querySelectorAll(".letter");
 
         for (let i = 0; i < keyCheck.length; i++) {
-            let counter = letterCheck.length;
-            if (counter === keyCheck.length) {
+            if (letterCheck.length === keyCheck.length) {
                 return true;
             } else {
                 return false;
@@ -95,14 +93,21 @@ class Game {
         }
     }
     gameOver() {
-        $("#overlay").show();
-        $("#overlay").append($("h1"));
+        $("#overlay")
+            .show()
+            .append($("h1"));
         $("h1").insertBefore($("#btn__reset"));
         if (this.checkForWin()) {
-            $("#overlay").hide().addClass("win").fadeIn(1000);
+            $("#overlay")
+                .hide()
+                .addClass("win")
+                .fadeIn(1000);
             $("h1").text("Great job!");
         } else {
-            $("#overlay").hide().addClass("lose").fadeIn(1000);
+            $("#overlay")
+                .hide()
+                .addClass("lose")
+                .fadeIn(1000);
             $("h1").text("Sorry, better luck next time!");
             removeKeys();
         }
