@@ -99,10 +99,10 @@ class Game {
         $("#overlay").append($("h1"));
         $("h1").insertBefore($("#btn__reset"));
         if (this.checkForWin()) {
-            $("#overlay").addClass("win");
+            $("#overlay").hide().addClass("win").fadeIn(1000);
             $("h1").text("Great job!");
         } else {
-            $("#overlay").addClass("lose");
+            $("#overlay").hide().addClass("lose").fadeIn(1000);
             $("h1").text("Sorry, better luck next time!");
             removeKeys();
         }
