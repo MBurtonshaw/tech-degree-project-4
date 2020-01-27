@@ -14,6 +14,7 @@ class Phrase {
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
     }
+    //Adds activePhrase to the screen
     addPhraseToDisplay() {
         //Declaring variables for DOM elements & appending ul to div
         const phraseDiv = document.getElementById("phrase");
@@ -38,6 +39,7 @@ class Phrase {
             }
         }
     }
+    //Checks to see if the user's guess is part of the active phrase
     checkLetter(letter) {
         if (this.phrase.includes(letter)) {
             return true;
@@ -47,6 +49,7 @@ class Phrase {
             return false;
         }
     }
+    //Reveals hidden characters from the active phrase, if the user guesses correctly
     showMatchedLetter(screenKeys) {
         const clickKeys = document.querySelectorAll("li");
         for (let j = 0; j < clickKeys.length; j++) {
