@@ -93,8 +93,12 @@ class Game {
         const letterCheck = document.querySelectorAll(".letter");
 
         for (let i = 0; i < keyCheck.length; i++) {
-            if (letterCheck.length === keyCheck.length) {
-            }
+              let counter = letterCheck.length;	           
+            if (counter === keyCheck.length) {
+                return true;
+             } else {
+                 return false;
+             }
         }
     }
     //Toggles win and lose screens
