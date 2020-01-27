@@ -5,6 +5,7 @@ const body = document.querySelector("body");
 const startScreen = document.getElementById("overlay");
 const hearts = document.querySelectorAll("li img");
 
+//Function used in reset() method
 function removeKeys() {
     $(".key").removeClass("chosen");
     $(".key").removeClass("wrong");
@@ -26,6 +27,7 @@ class Game {
     getRandomPhrase() {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
     }
+    //Sets a random phrase as the active phrase
     startGame() {
         $(startScreen).fadeOut(1000);
         const randomPhrase = game.getRandomPhrase();
@@ -33,6 +35,10 @@ class Game {
         randomNewPhrase.addPhraseToDisplay();
         this.activePhrase = randomNewPhrase;
     }
+    //Handles the logic behind if a key typed or clicked corresponds with one in the active phrase
+    //If so, it changes the key's color, disables it, and checks for a win
+    //If not, it changes the key's color and removes a life
+    //Finally, it checks for a win, if so, gameOver() method
     handleInteraction(event) {
         const screenKeys = event;
         const letter = screenKeys.textContent;
@@ -62,6 +68,7 @@ class Game {
             this.gameOver();
         }
     }
+    //Removes hearts based on incorrect guesses
     removeLife() {
         if (this.activePhrase.checkLetter() === false) {
             this.missed++;
@@ -80,18 +87,17 @@ class Game {
             }
         }
     }
+    //Checks to see if the full activePhrase has been guessed
     checkForWin() {
         const keyCheck = document.querySelectorAll(".show");
         const letterCheck = document.querySelectorAll(".letter");
 
         for (let i = 0; i < keyCheck.length; i++) {
             if (letterCheck.length === keyCheck.length) {
-                return true;
-            } else {
-                return false;
             }
         }
     }
+    //Toggles win and lose screens
     gameOver() {
         $("#overlay")
             .show()
@@ -112,6 +118,7 @@ class Game {
             removeKeys();
         }
     }
+    //Resets overlay screen, hearts, and active phrase pieces for a new game
     resetGame() {
         removeKeys();
         $("#overlay").removeClass("lose");
