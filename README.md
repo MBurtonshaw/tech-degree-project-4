@@ -9,3 +9,4 @@ On lines 110 & 116 of game.js I added another fadeIn animation for the "win" and
 
 Starting on line 5 of phrase.js I created a function to create a random color, which I used later on line 33 in the addPhraseToDisplay() method.
 On line 65 of phrase.js I added a fade animation for matched letters guessed correctly.
+On line 66 of phrase.js I added some textShadow on recommendation of a project reviewer, for readability of the white text.
