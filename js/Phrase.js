@@ -63,6 +63,7 @@ class Phrase {
                     .removeClass("hide")
                     .addClass("show")
                     .fadeIn(200);
+                $(revealed).css("textShadow", "1px 1px 1px #000");
             }
         }
     }
