@@ -4,6 +4,7 @@
 const body = document.querySelector("body");
 const startScreen = document.getElementById("overlay");
 const hearts = document.querySelectorAll("li img");
+let disabledArray = [];
 
 //Function used in reset() method
 function removeKeys() {
@@ -39,33 +40,42 @@ class Game {
     //If so, it changes the key's color, disables it, and checks for a win
     //If not, it changes the key's color and removes a life
     //Finally, it checks for a win, if so, gameOver() method
+    //The disabled array is to disable keys that have already been typed. If it has been typed, it's added to the array and won't be repeated. If it isn't a part of the array yet, it can be typed
     handleInteraction(event) {
         const screenKeys = event;
         const letter = screenKeys.textContent;
-        if (this.activePhrase.checkLetter(event.key)) {
-            this.activePhrase.showMatchedLetter(screenKeys);
-            screenKeys.disabled = true;
-            screenKeys.classList.add("chosen");
-            this.checkForWin();
-        }
-        if (
-            this.activePhrase.checkLetter(letter) &&
-            !this.activePhrase.checkLetter(event.key)
-        ) {
-            this.activePhrase.showMatchedLetter(screenKeys);
-            screenKeys.disabled = true;
-            screenKeys.classList.add("chosen");
-            this.checkForWin();
-        } else if (
-            !this.activePhrase.checkLetter(letter) ||
-            !this.activePhrase.checkLetter(event.key)
-        ) {
-            screenKeys.classList.add("wrong");
-            screenKeys.disabled = true;
-            this.removeLife();
-        }
-        if (this.checkForWin()) {
-            this.gameOver();
+        if (letter) {
+            if (disabledArray.includes(letter)) {
+                
+            } else {
+                if (this.activePhrase.checkLetter(event.key)) {
+                    this.activePhrase.showMatchedLetter(screenKeys);
+                    screenKeys.classList.add("chosen");
+                    disabledArray.push(letter);
+                    this.checkForWin();
+                }
+
+                if (
+                    this.activePhrase.checkLetter(letter) &&
+                    !this.activePhrase.checkLetter(event.key)
+                ) {
+                    this.activePhrase.showMatchedLetter(screenKeys);
+                    screenKeys.disabled = true;
+                    screenKeys.classList.add("chosen");
+                    this.checkForWin();
+                } else if (
+                    !this.activePhrase.checkLetter(letter) ||
+                    !this.activePhrase.checkLetter(event.key)
+                ) {
+                    screenKeys.classList.add("wrong");
+                    screenKeys.disabled = true;
+                    disabledArray.push(letter);
+                    this.removeLife();
+                }
+                if (this.checkForWin()) {
+                    this.gameOver();
+                }
+            }
         }
     }
     //Removes hearts based on incorrect guesses
@@ -93,12 +103,12 @@ class Game {
         const letterCheck = document.querySelectorAll(".letter");
 
         for (let i = 0; i < keyCheck.length; i++) {
-              let counter = letterCheck.length;	           
+            let counter = letterCheck.length;
             if (counter === keyCheck.length) {
                 return true;
-             } else {
-                 return false;
-             }
+            } else {
+                return false;
+            }
         }
     }
     //Toggles win and lose screens
