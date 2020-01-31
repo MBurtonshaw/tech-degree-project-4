@@ -137,6 +137,7 @@ class Game {
         removeKeys();
         $("#overlay").removeClass("lose");
         $("#overlay").removeClass("win");
+        disabledArray = [];
         if (!this.activePhrase) {
             $(".letter").remove();
         }
